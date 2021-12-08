@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {NoPreloading, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {AboutComponent} from './about/about.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {CanLoadAuthGuard} from './services/can-load-auth.guard';
 import {CustomPreLoadingStrategy} from './services/custom-pre-loading.strategy';
 import {ChatComponent} from './chat/chat.component';
+import {CanLoadAuthGuard} from './services/can-load-auth.guard';
 
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'courses',
     loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule),
-    /*canLoad: [CanLoadAuthGuard],*/
+    canLoad: [CanLoadAuthGuard],
     data: {
       preload: false
     }
